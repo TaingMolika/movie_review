@@ -4,13 +4,14 @@ import pandas as pd
 
 def preprocess_data(ratings, movies, users):
 
+    # movies = movies[~movies['title'].str.lower().eq('unknown')].copy() 
+
     ratings['timestamp'] = pd.to_datetime(ratings['timestamp'], unit='s')
 
-    movies['year'] = (
-    movies['title']
-      .str.extract(r'\((\d{4})\)', expand=False)
-      .astype('Int64')  
-    )
+    movies['year'] = (movies['title']
+                    .str.extract(r'\((\d{4})\)', expand=False)
+                    .astype('Int64')  
+                    )
 
     movies['clean_title'] = movies['title'].str.replace(r'\s*\(\d{4}\)', '', regex=True)
 

@@ -1,6 +1,10 @@
 import pandas as pd
 
-def loader(rating_path, movie_path, user_path):
+rating_path ="../../data/raw/ml-100k/u.data"
+movie_path ="../../data/raw/ml-100k/u.item"
+user_path ="../../data/raw/ml-100k/u.user"
+
+def loader(rating_path="rating_path", movie_path="movie_path", user_path="movie_path"):
     ratings = pd.read_csv(rating_path, 
                         sep="\t", 
                         names=["user_id", "movie_id", "rating", "timestamp"])
